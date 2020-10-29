@@ -42,4 +42,11 @@ SELECT * FROM venta
 WHERE id_articulo IN (135, 963) AND id_empleado IN (835, 369);
 ```
 
+# Reto 3: Ordenamientos y Límites
+
+``` sql
+SELECT * FROM tienda
+ORDER BY salario DESC
+LIMIT 5;
+```
 
