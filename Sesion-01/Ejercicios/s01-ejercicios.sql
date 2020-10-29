@@ -52,7 +52,7 @@ select officeCode, city, phone, country from offices where country in ('USA', 'F
 select officeCode, city, phone, country from offices where country not in ('USA', 'France');
 
 -- 18. Obtener el numero de orden, numero de cliente, estado y fecha de envio de las ordenes con numero 10165, 10287, 10310
-select orderNumber, customerNumber, status, shippedDate from orders where orderNumber in (10165, 10287, 10310);
+select orderNumber, customerNumber status, shippedDate from orders where orderNumber in (10165, 10287, 10310);
 
 -- 19. Obtener el apellido y nombre de cada cliente y ordenarlos por apellido de forma ascendente
 select contactLastName, contactFirstName from customers order by contactLastName ASC;
