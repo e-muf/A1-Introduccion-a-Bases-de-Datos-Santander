@@ -6,9 +6,9 @@
 
 ```json
 {
-  date: 1,
-  name: 1,
-  text: 1
+  "date": 1,
+  "name": 1,
+  "text": 1
 }
 ```
 
@@ -18,9 +18,9 @@
 
 ```json
 {
-  title: 1,
-  cast: 1,
-  year: 1
+  "title": 1,
+  "cast": 1,
+  "year": 1
 }
 
 ```
@@ -31,8 +31,8 @@
 
 ```json
 {
- name: 1,
- password: 1
+ "name": 1,
+ "password": 1
 }
 ```
 
@@ -44,7 +44,7 @@
 
 ```json
 {
-  name: 'Greg Powell'
+  "name": 'Greg Powell'
 }
 ```
 ![consulta1](./img/reto02_1.png)
@@ -52,12 +52,12 @@
 - ¿Qué comentarios han hecho Greg Powell o Mercedes Tyler?
 ```json
 {
-  $or: [
+  "$or": [
     {
-      name: 'Greg Powell'
+      "name": "Greg Powell"
     },
     {
-      name: 'Mercedes Tyler'
+      "name": "Mercedes Tyler"
     }
   ]
 }
@@ -68,13 +68,13 @@
 
 ```json
 {
-  project: {
-    num_mflix_comments: 1
+  "project": {
+    "num_mflix_comments": 1
   },
-  sort: {
-    num_mflix_comments: -1
+  "sort": {
+    "num_mflix_comments": -1
   },
-  limit: 1
+  "limit": 1
 }
 ```
 ![consulta3](./img/reto02_3.png)
@@ -83,13 +83,13 @@
 
 ```json
 {
-  project: {
-    title: 1
+  "project": {
+    "title": 1
   },
-  sort: {
-    num_mflix_comments: -1
+  "sort": {
+    "num_mflix_comments": -1
   },
-  limit: 5
+  "limit": 5
 }
 ```
 ![consulta4](./img/reto02_4.png)
