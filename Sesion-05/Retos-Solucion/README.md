@@ -1,38 +1,98 @@
-# Retos Sesión 3 Solucionados
+# Retos Sesión 5 Solucionados
 
-## Reto 1
+## Reto 1: Expresiones Regulares
 
-- ¿Cuál es el nombre de los empleados cuyo sueldo es mayor a $100,000?
+- Propiedades que no permiten fiestas.
+
+```json
+{
+  "filter": {
+    "house_rules": RegExp("not? part(y|ies) allowed", i)
+  }
+}
+```
 
 ![consulta1](./img/reto01_1.png)
 
-- ¿Cuál es la cantidad mínima y máxima de ventas de cada empleado?
+- Propiedades que admiten mascotas.
+
+```json
+{
+  "filter": {
+    "house_rules": RegExp("[^no] pets allowed", i)
+  }
+}
+```
 
 ![consulta2](./img/reto01_2.png)
 
-- ¿Cuáles claves de venta incluyen artículos cuyos precios son mayores a $5,000?
+- Propiedades que no permiten fumadores.
+
+```json
+{
+  "filter": {
+    "house_rules": RegExp("not? smoke", i)
+  }
+}
+```
 
 ![consulta3](./img/reto01_3.png)
 
-## Reto 2
+- Propiedades que no perimitan fiestas ni fumadores.
 
-- ¿Cuál es el nombre de los empleados que realizaron cada venta?
+```json
+{
+  "filter": {
+    "house_rules": RegExp("not? (part(y|ies)|smok)", i)
+  }
+}
+```
+
+![consulta4](./img/reto01_4.png)
+
+## Reto 2: Notación punto y arreglos
+
+- Usando la colección `sample_airbnb.listingsAndReviews`, agrega un filtro que permita obtener todas las publicaciones que tengan 50 o más comentarios, que la valoración sea mayor o igual a 80, que cuenten con conexión a Internet vía cable y estén ubicados en Brazil.
+
+```json
+{
+  "filter": {
+    "number_of_reviews": {
+      "$gte": 50
+    },
+    "review_scores.review_scores_rating": {
+      "$gte": 80
+    },
+    "amenities": {
+      "$in": [
+        RegExp("Ethernet")
+      ]
+    },
+    "address.country_code": "BR"
+  }
+}
+```
 
 ![consulta1](./img/reto02_1.png)
 
-- ¿Cuál es el nombre de los artículos que se han vendido?
-![consulta2](./img/reto02_2.png)
+## Reto 3: Introducción a las agregaciones
 
-- ¿Cuál es el total de cada venta?
-![consulta3](./img/reto02_3.png)
+- Usando la colección `sample_airbnb.listingsAndReviews`, mediante el uso de agregaciones, encontrar el número de publicaciones que tienen conexión a Internet sea desde Wifi o desde cable (Ethernet).
 
-## Reto 3
+```json
+[
+  {
+    "$match": {
+      "amenities": {
+        "$in": [
+          new RegExp('wifi', 'i'), new RegExp('ethernet', 'i'), new RegExp('internet', 'i')
+        ]
+      }
+    }
+  }, {
+    "$count": "publications_with_internet"
+  }
+]
+```
 
-- Obtener el puesto de un empleado.
 ![consulta1](./img/reto03_1.png)
-
-- Saber qué artículos ha vendido cada empleado.
-![consulta2](./img/reto03_2.png)
-
-- Saber qué puesto ha tenido más ventas.
-![consulta3](./img/reto03_3.png)
